@@ -1,0 +1,39 @@
+{% include "header.html" %}
+
+<body>
+
+<div class="container">
+
+	<header role="banner">
+	<h1>ToDo List</h1>
+	</header>
+	
+	<main role="main">
+
+		<p><a href="{{ url_for('add_new_task') }}">Create a New Task</a></p>
+
+		{% for task in all_tasks %}
+			{% if task.finished == 0 %}
+				<h1 class="entry-title" itemprop="headline">{{ task.title }}</h1>
+			{% elif task.finished == 1%}
+				<h1 class="entry-title finished" itemprop="headline">{{ task.title }}</h1>
+			{% endif %}
+			<p>{{ task.description }} <a href="{{ url_for('delete_task', task_id=task.id) }}">x</a>/
+				<a href="{{ url_for('edit_task', task_id=task.id) }}">edit</a>/
+				<a href="{{ url_for('finish_task', task_id=task.id) }}">finish</a></p>
+			<hr>
+		{% endfor %}
+
+	</main>
+		<footer role="contentinfo">
+		<div class="footer-link">
+			<p>axkim234@gmail.com</p>
+		</div>
+		<div class="copyright">Template Provided by Hugo Themes</div>
+	</footer>
+
+</div>
+
+</body>
+</html>
+
