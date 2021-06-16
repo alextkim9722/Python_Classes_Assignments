@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/normalize.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/skeleton.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/custom.css') }}">
+<title>Cafe and Wifi</title>
+</head>
+<body>
+
+<div class="container">
+
+	<header role="banner">
+	<h1>Cafe and Wifi</h1>
+	</header>
+	
+	<main role="main">
+
+		{% for cafe in all_cafes %}
+			<h1 class="entry-title" itemprop="headline">{{ cafe.name }}</a></h1>
+			<p>Location: <a href="{{ cafe.map_url }}">{{ cafe.location }}</a></p>
+			<p>Wifi: {{ cafe.has_wifi }}</p>
+			<img src="{{ cafe.img_url }}">
+			<hr>
+		{% endfor %}
+
+	</main>
+
+	<footer role="contentinfo">
+		<div class="footer-link">
+			<p>axkim234@gmail.com</p>
+		</div>
+		<div class="copyright">Template Provided by Hugo Themes</div>
+	</footer>
+
+</div>
+
+</body>
+</html>
